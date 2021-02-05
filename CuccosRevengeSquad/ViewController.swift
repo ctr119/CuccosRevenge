@@ -12,15 +12,17 @@ class ViewController: UIViewController {
         sceneView.debugOptions = [
             .showWorldOrigin, .showFeaturePoints
         ]
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
         sceneView.autoenablesDefaultLighting = true
+        sceneView.delegate = self
         
         let tapGestureRecogniser = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         sceneView.addGestureRecognizer(tapGestureRecogniser)
     }
     
     @IBAction func play(_ sender: UIButton) {
-        loadCucco()
+        addCucco()
     }
     
     private func loadBox() {
@@ -28,14 +30,6 @@ class ViewController: UIViewController {
         boxNode.position = SCNVector3(0, 0, -1)
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
         sceneView.scene.rootNode.addChildNode(boxNode)
-    }
-    
-    private func loadCucco() {
-        guard let cuccoScene = SCNScene(named: "art.scnassets/Bonky_the_Cucco.scn") else { return }
-        guard let cuccoNode = cuccoScene.rootNode.childNode(withName: "cucco", recursively: false) else { return }
-        cuccoNode.position = SCNVector3(0, 0, -0.2)
-        cuccoNode.scale = SCNVector3(0.0005, 0.0005, 0.0005)
-        sceneView.scene.rootNode.addChildNode(cuccoNode)
     }
     
     private func addCucco() {
@@ -68,5 +62,49 @@ class ViewController: UIViewController {
             }
         }
     }
+}
+
+extension ViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        let grassTileNode = makeGrassTileNode(on: planeAnchor)
+        node.addChildNode(grassTileNode)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+        let grassTileNode = makeGrassTileNode(on: planeAnchor)
+        node.addChildNode(grassTileNode)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard let _ = anchor as? ARPlaneAnchor else { return }
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+    }
+    
+    private func makeGrassTileNode(on planeAnchor: ARPlaneAnchor) -> SCNNode {
+        let grassTileNode = SCNNode(geometry: SCNPlane(width: CGFloat(planeAnchor.extent.x),
+                                                       height: CGFloat(planeAnchor.extent.z)))
+        
+        grassTileNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "Grass Tile")
+        grassTileNode.geometry?.firstMaterial?.isDoubleSided = true
+        grassTileNode.position = SCNVector3(planeAnchor.center.x,
+                                            planeAnchor.center.y,
+                                            planeAnchor.center.z)
+        grassTileNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
+        
+        return grassTileNode
+    }
+    
+//    private func positionObjectExactlyAtPlanesSurface(hitTestResult: SCNHitTestResult) {
+//        let transform = hitTestResult.modelTransform
+//        // The third column contains the information about the plane
+//        let position = SCNVector3(transform.m13, transform.m23, transform.m33)
+//    }
 }
 

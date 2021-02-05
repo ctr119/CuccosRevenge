@@ -18,6 +18,7 @@
 		10A35E5625A88B2F00BA8CA1 /* CuccosRevengeSquadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A35E5525A88B2F00BA8CA1 /* CuccosRevengeSquadUITests.swift */; };
 		10A35E6725A8A9FE00BA8CA1 /* Bonky_the_Cucco.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 10A35E6625A8A9FE00BA8CA1 /* Bonky_the_Cucco.usdz */; };
 		3E71E4E425CD30380017ECA8 /* Cucco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71E4E325CD30380017ECA8 /* Cucco.swift */; };
+		3E71E4F425CD884C0017ECA8 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71E4F325CD884C0017ECA8 /* IntExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		10A35E5725A88B2F00BA8CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10A35E6625A8A9FE00BA8CA1 /* Bonky_the_Cucco.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Bonky_the_Cucco.usdz; sourceTree = "<group>"; };
 		3E71E4E325CD30380017ECA8 /* Cucco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cucco.swift; sourceTree = "<group>"; };
+		3E71E4F325CD884C0017ECA8 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				10A35E3E25A88B2F00BA8CA1 /* LaunchScreen.storyboard */,
 				10A35E4125A88B2F00BA8CA1 /* Info.plist */,
 				1053A32525BB18FC00812D5F /* art.scnassets */,
+				3E71E4F325CD884C0017ECA8 /* IntExtension.swift */,
 			);
 			path = CuccosRevengeSquad;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				10A35E3825A88B2D00BA8CA1 /* ViewController.swift in Sources */,
 				10A35E3425A88B2D00BA8CA1 /* AppDelegate.swift in Sources */,
 				10A35E3625A88B2D00BA8CA1 /* SceneDelegate.swift in Sources */,
+				3E71E4F425CD884C0017ECA8 /* IntExtension.swift in Sources */,
 				3E71E4E425CD30380017ECA8 /* Cucco.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
