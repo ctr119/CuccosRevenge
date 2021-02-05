@@ -68,19 +68,5 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    private func playHittedCuccoAnimation(node: SCNNode) {
-        print("You hitted a Cucco...")
-        let spinAnimation = CABasicAnimation(keyPath: "position")
-        spinAnimation.fromValue = node.presentation.position
-        spinAnimation.toValue = SCNVector3(node.position.x - 0.2,
-                                           node.position.y - 0.2,
-                                           node.position.z - 0.2)
-        spinAnimation.duration = 3
-        spinAnimation.repeatCount = 5
-        spinAnimation.autoreverses = true
-        
-        node.addAnimation(spinAnimation, forKey: "position")
-    }
 }
 
