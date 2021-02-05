@@ -38,14 +38,49 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(cuccoNode)
     }
     
+    private func addCucco() {
+        let cucco = Cucco()
+        sceneView.scene.rootNode.addChildNode(cucco)
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         guard let sceneViewTappedOn = sender.view as? SCNView else { return }
         let touchCoordinates = sender.location(in: sceneViewTappedOn)
         let hitTest = sceneViewTappedOn.hitTest(touchCoordinates, options: nil)
         if !hitTest.isEmpty {
             guard let firstTestResult = hitTest.first else { return }
-            let geometry = firstTestResult.node.geometry
+            let node = firstTestResult.node
+            let characterKind = Characters(rawValue: node.name ?? "")
+            
+            switch characterKind {
+            case .cucco:
+                guard let cucco = node as? Cucco else { return }
+                if !cucco.isBeingAnimated() {
+                    SCNTransaction.begin()
+                    cucco.playHittedAnimation()
+                    SCNTransaction.completionBlock = {
+                        cucco.removeFromParentNode()
+                    }
+                    SCNTransaction.commit()
+                }
+            default:
+                print("Another not important thing was hitted")
+            }
         }
+    }
+    
+    private func playHittedCuccoAnimation(node: SCNNode) {
+        print("You hitted a Cucco...")
+        let spinAnimation = CABasicAnimation(keyPath: "position")
+        spinAnimation.fromValue = node.presentation.position
+        spinAnimation.toValue = SCNVector3(node.position.x - 0.2,
+                                           node.position.y - 0.2,
+                                           node.position.z - 0.2)
+        spinAnimation.duration = 3
+        spinAnimation.repeatCount = 5
+        spinAnimation.autoreverses = true
+        
+        node.addAnimation(spinAnimation, forKey: "position")
     }
 }
 
