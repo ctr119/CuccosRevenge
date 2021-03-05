@@ -20,6 +20,7 @@
 		3E71E4E425CD30380017ECA8 /* Cucco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71E4E325CD30380017ECA8 /* Cucco.swift */; };
 		3E71E4F425CD884C0017ECA8 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71E4F325CD884C0017ECA8 /* IntExtension.swift */; };
 		3E71E4F925CF0A900017ECA8 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71E4F825CF0A900017ECA8 /* SCNNodeExtension.swift */; };
+		3E76141325F24D380080230F /* ARSCNViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E76141225F24D380080230F /* ARSCNViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3E71E4E325CD30380017ECA8 /* Cucco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cucco.swift; sourceTree = "<group>"; };
 		3E71E4F325CD884C0017ECA8 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		3E71E4F825CF0A900017ECA8 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
+		3E76141225F24D380080230F /* ARSCNViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSCNViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		3E71E4FD25CF12F90017ECA8 /* Exntensions */ = {
 			isa = PBXGroup;
 			children = (
+				3E76141225F24D380080230F /* ARSCNViewExtension.swift */,
 				3E71E4F325CD884C0017ECA8 /* IntExtension.swift */,
 				3E71E4F825CF0A900017ECA8 /* SCNNodeExtension.swift */,
 			);
@@ -293,6 +296,7 @@
 			files = (
 				10A35E3825A88B2D00BA8CA1 /* ViewController.swift in Sources */,
 				10A35E3425A88B2D00BA8CA1 /* AppDelegate.swift in Sources */,
+				3E76141325F24D380080230F /* ARSCNViewExtension.swift in Sources */,
 				10A35E3625A88B2D00BA8CA1 /* SceneDelegate.swift in Sources */,
 				3E71E4F425CD884C0017ECA8 /* IntExtension.swift in Sources */,
 				3E71E4F925CF0A900017ECA8 /* SCNNodeExtension.swift in Sources */,

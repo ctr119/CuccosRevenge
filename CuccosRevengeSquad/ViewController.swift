@@ -26,7 +26,8 @@ class ViewController: UIViewController {
     }
     
     private func addCucco() {
-        let cucco = Cucco()
+        guard let position = sceneView.getCurrentPositionInFrontOfCamera() else { return }
+        let cucco = Cucco(position: position)
         sceneView.scene.rootNode.addChildNode(cucco)
     }
     

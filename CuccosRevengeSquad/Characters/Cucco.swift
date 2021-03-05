@@ -9,9 +9,9 @@ class Cucco: SCNNode {
     private let cuccoSceneName = "art.scnassets/Bonky_the_Cucco.scn"
     private let cuccoNodeName = "cucco"
     
-    override init() {
+    init(position: SCNVector3) {
         super.init()
-        commonSetup()
+        commonSetup(position: position)
     }
     
     required init?(coder: NSCoder) {
@@ -19,7 +19,7 @@ class Cucco: SCNNode {
         commonSetup()
     }
     
-    private func commonSetup() {
+    private func commonSetup(position: SCNVector3 = SCNVector3(0, 0, -0.2)) {
         guard let cuccoScene = SCNScene(named: cuccoSceneName) else {
             fatalError("Missing cucco scene")
         }
@@ -30,7 +30,7 @@ class Cucco: SCNNode {
         
         name = "\(Characters.cucco.rawValue)"
         scale = SCNVector3(0.0005, 0.0005, 0.0005)
-        position = SCNVector3(0, 0, -0.2)
+        self.position = position
         
         addChildNode(cuccoNode)
         
