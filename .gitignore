@@ -1,0 +1,7 @@
+CuccosRevengeSquad.xcodeproj/xcuserdata
+CuccosRevengeSquad.xcodeproj/project.xcworkspace
+
+*.xcuserstate
+
+.idea
+.DS_Store
