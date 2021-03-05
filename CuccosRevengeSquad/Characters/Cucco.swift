@@ -26,12 +26,23 @@ class Cucco: SCNNode {
         guard let cuccoNode = cuccoScene.rootNode.childNode(withName: cuccoNodeName, recursively: false) else {
             fatalError("Missing cucco node")
         }
+        cuccoNode.name = cuccoNodeName
         
         name = "\(Characters.cucco.rawValue)"
         scale = SCNVector3(0.0005, 0.0005, 0.0005)
         position = SCNVector3(0, 0, -0.2)
         
         addChildNode(cuccoNode)
+        
+        let physicsShape = SCNPhysicsShape(node: cuccoNode, options: [.keepAsCompound : true])
+        physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+    }
+    
+    // TODO: test this method
+    private func addPhysicsBody() {
+        guard let cuccoNode = childNode(withName: cuccoNodeName, recursively: false) else { return }
+        let physicsShape = SCNPhysicsShape(node: cuccoNode, options: [.keepAsCompound : true])
+        physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
     }
     
     func isBeingAnimated() -> Bool {

@@ -25,13 +25,6 @@ class ViewController: UIViewController {
         addCucco()
     }
     
-    private func loadBox() {
-        let boxNode = SCNNode(geometry: SCNBox(width: 0.2, height: 0.2, length: 0.2, chamferRadius: 0))
-        boxNode.position = SCNVector3(0, 0, -1)
-        boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        sceneView.scene.rootNode.addChildNode(boxNode)
-    }
-    
     private func addCucco() {
         let cucco = Cucco()
         sceneView.scene.rootNode.addChildNode(cucco)
@@ -41,6 +34,7 @@ class ViewController: UIViewController {
         guard let sceneViewTappedOn = sender.view as? SCNView else { return }
         let touchCoordinates = sender.location(in: sceneViewTappedOn)
         let hitTest = sceneViewTappedOn.hitTest(touchCoordinates, options: nil)
+        
         if !hitTest.isEmpty {
             guard let firstTestResult = hitTest.first else { return }
             let node = firstTestResult.node
